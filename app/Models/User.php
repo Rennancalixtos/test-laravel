@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\Post;
 
 class User extends Authenticatable
@@ -58,7 +59,10 @@ class User extends Authenticatable
 
 
 
-    //agora vou tentar criar o ManyToMany
+    public function ultimopost(): HasOne
+    {
+        return $this->hasOne(Post::class)->latestOfMany();
+    }
 
 }
 

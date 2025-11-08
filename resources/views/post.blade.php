@@ -1,24 +1,22 @@
-<div>
-    <!-- He who is contented is rich. - Laozi -->
-    <!-- Por enquanto é só para teste, depois vou estilizar -->
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+<div class="consulta-container">
+    <h1 class="consulta-title">Lista de Posts</h1>
 
-<head>
-    <title>Lista de Posts</title>
-</head>
-<body>
-    <h1>Posts</h1>
+    <div class="container">
+        @foreach ($posts_users as $post)
+            <div class="post-item">
+                <div class="post-header">
+                    <h3>{{ $post->titulo }}</h3>
+                    <span class="post-badge">Post</span>
+                </div>
+                <p class="post-text">{{ Str::limit($post->conteudo, 150) }}...</p>
+                <div class="post-info">
+                    <small><strong>Autor:</strong> {{ $post->user->name ?? 'Desconhecido' }}</small>
+                    <small><strong>Criado em:</strong> {{ $post->created_at->format('d/m/Y H:i') }}</small>
+                </div>
 
-    @foreach ($posts_users as $post)
-        <div style="margin-bottom: 20px; border-bottom: 1px solid #ccc;">
-            <h2>{{ $post->titulo }}</h2>
-            <p>{{ $post->conteudo }}</p>
-            <p><strong>Autor:</strong> {{ $post->user->name ?? 'Desconhecido' }}</p>
-            <small>Criado em: {{ $post->created_at }}</small>
-        </div>
-    @endforeach
-</body>
-
-
+            </div>
+        @endforeach
+    </div>
 </div>
-

@@ -24,16 +24,16 @@ class IndexController extends Controller
         
         $consulta = (new ConsultaModel)->consultaPorId(1);
 
-        return view('index', ['consulta' => $consulta]);
+        // return view('index', ['consulta' => $consulta]);
+        return view('index', compact('consulta'));
     }
 
     
     public function nomes()
     {
-        $consultanome = (new ConsultaModel)->consultarNomes();
-        
-        // return view('index', ['nomes' => $consultanome]); // tentei assim, funcionou porém com o compact achei mais limpo 
-        return view('index', compact('consultanome'));
+        $consultanome = ConsultaModel::consultarNomes();
+
+        return view('nomes', compact('consultanome'));
         
     }
 
@@ -41,22 +41,44 @@ class IndexController extends Controller
     public function post()
     {
         $posts_users = Post::with('user')->get();
+
         return view('post', compact('posts_users'));
     }
 
-    // meu pensamento é criar uma função de controller para cada model de consulta para facilitar a manutenção
 
 
 
-    //usei o cmd --resource para criar automaticamente algumas rotas 'padrão' de consulta -- dbquery NÃO USAR!!
-    
+    public function ultimopt()
+    {
+        $recuperar_usuario = User::find(3);
+        $recuperar_ultimo_post =  $recuperar_usuario->ultimopost;       
+
+        return view('ultimopost', compact('recuperar_ultimo_post'));   
+        
+    }
+
+    public function consultacomfiltro()
+    {
+        $user = Post::whereHas('user', 
+        function($buscar)
+        {
+            $buscar->where('created_at', '>', now()->subDays(30));   
+        })->Orderby('created_at','asc')->get();
+
+
+        return view('buscarfiltro', compact('user'));
+    }
+
+    // public function userByPost($post_id)
+    // {
+    //         $post = Post::findOrFail($post_id);
+    //         $user = $post->user;
+    //         return view('userpp', compact('post', 'user'));
+    // }
 
 
 
-
-
-    
-    /**
+   /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
