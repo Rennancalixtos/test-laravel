@@ -8,6 +8,7 @@ use App\Http\Controllers\IndexController;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/nomes', [IndexController::class, 'nomes']);
+Route::get('/posts', [IndexController::class, 'post']);
 
 
 

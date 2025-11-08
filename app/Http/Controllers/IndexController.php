@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\ConsultaModel;
+use App\Models\Post;
 
 
 class IndexController extends Controller
@@ -36,6 +37,13 @@ class IndexController extends Controller
         
     }
 
+
+    public function post()
+    {
+        $posts_users = Post::with('user')->get();
+        return view('index', compact('posts_users'));
+    }
+
     // meu pensamento é criar uma função de controller para cada model de consulta para facilitar a manutenção
 
 
@@ -43,6 +51,11 @@ class IndexController extends Controller
     //usei o cmd --resource para criar automaticamente algumas rotas 'padrão' de consulta -- dbquery NÃO USAR!!
     
 
+
+
+
+
+    
     /**
      * Store a newly created resource in storage.
      */
