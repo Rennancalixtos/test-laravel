@@ -1,6 +1,6 @@
 <div>
     <!-- He who is contented is rich. - Laozi -->
-
+    <!-- Por enquanto é só para teste, depois vou estilizar -->
 
 
 <head>
@@ -21,3 +21,4 @@
 
 
 </div>
+
