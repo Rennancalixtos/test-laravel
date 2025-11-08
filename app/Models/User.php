@@ -58,6 +58,8 @@ class User extends Authenticatable
 
 
 
+    //agora vou tentar criar o ManyToMany
+
 }
 
 
