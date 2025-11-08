@@ -41,7 +41,7 @@ class IndexController extends Controller
     public function post()
     {
         $posts_users = Post::with('user')->get();
-        return view('index', compact('posts_users'));
+        return view('post', compact('posts_users'));
     }
 
     // meu pensamento é criar uma função de controller para cada model de consulta para facilitar a manutenção
