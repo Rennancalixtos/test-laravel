@@ -50,9 +50,9 @@ class IndexController extends Controller
 
     public function ultimopt()
     {
-        $recuperar_usuario = User::find(3);
-        $recuperar_ultimo_post =  $recuperar_usuario->ultimopost;       
-
+        $recuperar_usuario = User::find(3); 
+        $recuperar_ultimo_post =  $recuperar_usuario->ultimopost;  
+        
         return view('ultimopost', compact('recuperar_ultimo_post'));   
         
     }
@@ -69,12 +69,6 @@ class IndexController extends Controller
         return view('buscarfiltro', compact('user'));
     }
 
-    // public function userByPost($post_id)
-    // {
-    //         $post = Post::findOrFail($post_id);
-    //         $user = $post->user;
-    //         return view('userpp', compact('post', 'user'));
-    // }
 
 
 

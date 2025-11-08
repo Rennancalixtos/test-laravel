@@ -1,5 +1,3 @@
-
-
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
  <div class="container">
     <h1>Último Post</h1>
@@ -17,8 +15,8 @@
 
         <div class="post-content-section">
             <div class="post-badge">Último Post</div>
-            <h2 class="post-title">{{ $recuperar_ultimo_post->title ?? 'Sem título' }}</h2>
-            <p class="post-body">{{ $recuperar_ultimo_post->body ?? $recuperar_ultimo_post->content ?? 'Sem conteúdo' }}</p>
+            <h2 class="post-title">{{ $recuperar_ultimo_post->titulo ?? 'Sem título' }}</h2>
+            <p class="post-body">{{ $recuperar_ultimo_post->body ?? $recuperar_ultimo_post->conteudo ?? 'Sem conteúdo' }}</p>
         </div>
 
         <div class="post-meta">
@@ -32,4 +30,7 @@
             @endif
         </div>
     </div>
-</div>
+</div> 
+
+
+
