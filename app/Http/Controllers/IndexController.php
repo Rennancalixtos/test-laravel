@@ -50,8 +50,9 @@ class IndexController extends Controller
 
     public function ultimopt()
     {
-        $recuperar_usuario = User::find(3); 
-        $recuperar_ultimo_post =  $recuperar_usuario->ultimopost;  
+        // $recuperar_usuario = User::find(3); 
+        // $recuperar_ultimo_post =  $recuperar_usuario->ultimopost; 
+           $recuperar_ultimo_post = Post::with('user')->latest()->first();  // -- assim ficou melhor!
         
         return view('ultimopost', compact('recuperar_ultimo_post'));   
         
